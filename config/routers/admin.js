@@ -134,9 +134,9 @@ router.post("/admin/login" , async(req , res)=>{
 // creating admin
 router.post('/admincreating' , async(req , res)=>{
     var Authtoken = req.cookies.adminAuth || '';
-    // if(!Authtoken){
-    //     res.redirect('/qafadmin');
-    // }
+    if(!Authtoken){
+        res.redirect('/qafadmin');
+    }
     const admin = new Admin({
         fname : req.body.fname , 
         lname : req.body.lname , 
@@ -289,6 +289,10 @@ router.get('/admin/deletingadmin/:id', async(req , res)=>{
         res.redirect('/qafadmin');
     }
     const admin = Admin;
+    const adminLength = await admin.estimatedDocumentCount();
+    if (adminLength < 2) {
+        return res.redirect('/admin');
+    }
     try {
         await admin.findOneAndDelete({_id : req.params.id} , async(err , doc)=>{
     });
