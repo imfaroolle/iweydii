@@ -32,8 +32,8 @@ app.use(express.json());
 app.use(cookieparser());
 var upload = multer({ dest: 'public/uploads/' })
 
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-// app.listen(port , (e)=>{
-//     console.log('app is runnig on port ' + port);
-// })
+app.listen(port , (e)=>{
+    console.log('app is runnig on port ' + port);
+})
