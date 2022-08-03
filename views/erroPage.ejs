@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <title>Error-QA-Forum</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background-color: #2c3e50;
+            width: 80%;
+            height: 500px;
+            margin-left: 10%;
+            margin-top: 5%;
+            box-shadow: 10px 10px 14px 4px #837b7b;
+        }
+        .err{
+            font-family: "lato" , "arial" , sans-serif;
+            font-size: 65px;
+            font-weight: 300;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000000;
+            text-align: center;
+            position: relative;
+            top: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 class="err"><%=error%> !</h3>
+    </div>
+</body>
+</html>

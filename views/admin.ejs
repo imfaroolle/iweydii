@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Q-A Forum</title>
+    <style>
+      /* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #2c3e50;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+    </style>
+</head>
+<body onload="myFunction()">
+  <div id="loader"></div>
+    <header class="header" >
+      <nav>
+        <span class="navbtn">
+            <i class="ion-navicon" id="navbtn"></i>
+        </span>
+        <div class="navibar">
+          <ul>
+            <li><a href="/allquestions">Live Preview</a></li>
+          </ul>
+        </div>
+        <!-- <div class="time">
+          <span class="timeicon"><i class="ion-ios-clock"></i></span>
+          <span class="timetxt" id="timetxt"></span> -->
+          <!-- <span class="dateicon"><i class="ion-ios-calendar"></i></span>
+          <span class="datetxt"> 11-12-2020</span> -->
+        </div>
+        <!-- <div class="logout">
+          <a href="#" class="logoutbtn">Logout</a>
+        </div> -->
+        <div class="imgcircle">
+          
+          <%if(adminData.profile == null){%>
+            <img src="/img/admin1.png" alt="admin image" id="clickImg">
+            <%} else{%>
+            <img src="/uploads/<%=adminData.profile%>" alt="admin image" id="clickImg">
+            <%}%>
+            <div class="options animated FadeIn" id="options">   
+              <div class="profilesection">
+                <%if(adminData.profile == null){%>
+                <img src="/img/admin1.png" alt="admin image" class="leftImg">
+                <%} else{%>
+                <img src="/uploads/<%=adminData.profile%>" alt="admin image" class="leftImg">
+                <%}%>
+              <span class="name"><%= adminData.fname%></span>
+              <span class="email"><%= adminData.email%></span>
+            </div>
+            <div class="partSections">
+              <button class="textInParts button"onclick="document.getElementById('id01').style.display='block'">Profile</button>
+            </div>
+
+            <div class="partSections">
+              <h6 class="textInParts"><a href="/logout">Logout</a></h6>
+            </div>
+            <div class="partSections">
+              <h6 class="textInParts"><a href="/admin/logoutAll">Logout All</a></h6>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+    </header>
+    <div class="minipanel animated  bounceInDown" id="minipanel">
+      <div class="icons">
+        <ul>
+          <li class="minicons" id="dashclick"><i class="ion-aperture" class="icon" onclick="openCity(event, 'dash')"></i> </li>
+
+          <!-- miniAdmins Section -->
+
+          <li class="minicons" id="adminsmin"><i class="ion-person" class="icon"></i>
+            <li class="adminsviewMin"><i class="ion-person-add" class="icon" onclick="openCity(event, 'addnewAdmin')"></i></li>
+            <li class="adminsviewMin"><i class="ion-edit" class="icon" onclick="openCity(event, 'updateadmin')"></i></li>
+            <li class="adminsviewMin"><i class="ion-eye" class="icon"  onclick="openCity(event, 'Viewalladmins')"></i></li>
+          </li>
+
+          <!-- miniStudents section -->
+
+         <li class="minicons" id="studentsMin"><i class="ion-ios-people" class="icon"></i>
+            <li class="studentsViewmin"><i class="ion-person-add" class="icon" onclick="openCity(event, 'addStudent')"></i></li>
+            <li class="studentsViewmin"><i class="ion-edit" class="icon" onclick="openCity(event, 'update')"></i></li>
+            <li class="studentsViewmin"><i class="ion-eye" class="icon" onclick="openCity(event, 'Viewall')"></i></li>
+          </li>
+
+        <!-- min questions section -->
+
+        <li class="minicons" id="questionsMin"><i class="ion-help-circled" class="icon"></i>
+          <li class="questionviewMin"><i class="ion-plus-circled" class="icon" onclick="openCity(event, 'Addquestions')"></i></li>
+          <li class="questionviewMin"><i class="ion-edit" class="icon" onclick="openCity(event, 'updatequestion')"></i></li>
+          <li class="questionviewMin"><i class="ion-eye" class="icon" onclick="openCity(event, 'Viewallquestions')"></i></li>
+          <li class="questionviewMin"><i class="ion-plus-circled" class="icon" onclick="openCity(event, 'imq')"></i></li>
+          <li class="questionviewMin"><i class="ion-edit" class="icon" onclick="openCity(event, 'uimq')"></i></li>
+          <li class="questionviewMin"><i class="ion-eye" class="icon" onclick="openCity(event, 'vimq')"></i></li>
+        </li>
+
+        <!-- min Answers section  -->
+
+        <li class="minicons" id="AnswersMin"><i class="ion-checkmark-circled" class="icon"></i>
+          <li class="AnswersviewMin"><i class="ion-plus-circled" class="icon" onclick="openCity(event, 'addans')"></i></li>
+          <li class="AnswersviewMin"><i class="ion-edit" class="icon" onclick="openCity(event, 'updateans')"></i></li>
+          <li class="AnswersviewMin"><i class="ion-eye" class="icon" onclick="openCity(event, 'Viewallans')"></i></li>
+        </li>
+
+        <li class="minicons"><i class="ion-arrow-return-right" class="icon"></i> </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="welcome">
+      <h3 class="welcometxt">Welcome Enjoy your work simply !</h3>
+    </div> -->
+    <div class="admin-panel animated bounceInLeft" id="adminpnl">
+      <div class="adminimg">
+        <%if(adminData.profile == null){%>
+        <img src="/img/admin1.png" alt="admin image">
+        <%} else{%>
+          <img src="/uploads/<%=adminData.profile%>" alt="admin image">
+          <%}%>
+        <h3><%= adminData.fname + " " + adminData.lname %></h3>
+      </div>
+        <div class="main-menu">
+            <div class="tab">
+                <div  class="menu">
+                  <button class="dashboard"  id="mydash" class="tablinks" onclick="openCity(event, 'dash')">Dashboard</button>
+                    <ul>
+                        <li id="admins" class="accord">Admins</li>
+                    </ul>          
+                    <!-- admins buttuns      -->
+                <button class="adminsview animated fadeInDown" class="tablinks" onclick="openCity(event, 'addnewAdmin')">Add new Admin(s)</button>
+                <button class="adminsview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'updateadmin')">Update</button>
+                <button class="adminsview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'Viewalladmins')">View All</button>
+                <ul>
+                  <li id="student" class="accord">Students</li>
+              </ul>    
+              <!-- students buttons -->
+                <button class="studentview animated fadeInDown" class="tablinks" onclick="openCity(event, 'addStudent')">Add Student(s)</button>
+                <button class="studentview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'update')">Update Data</button>
+                <button class="studentview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'Viewall')">View All</button>
+
+                <ul>
+                  <li id="questions" class="accord">Questions</li>
+               </ul>  
+                <!-- Questions tabs -->
+                <button class="questionview animated fadeInDown" class="tablinks" onclick="openCity(event, 'Addquestions')">Add Question(s)</button>
+                <button class="questionview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'updatequestion')">Update</button>
+                <button class="questionview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'Viewallquestions')">View All</button>
+                <button class="questionview animated fadeInDown" class="tablinks" onclick="openCity(event, 'imq')">Add Reply(s)</button>
+                <button class="questionview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'uimq')">Update Reply</button>
+                <button class="questionview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'vimq')">View All</button>
+                <ul>
+                  <li id="Answers" class="accord">Answers</li>
+               </ul>  
+                <!-- Answers tabs -->
+                <button class="Answersview animated fadeInDown" class="tablinks" onclick="openCity(event, 'addans')">Add Answers(s)</button>
+                <button class="Answersview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'updateans')">Update</button>
+                <button class="Answersview animated fadeInDown"  class="tablinks" onclick="openCity(event, 'Viewallans')">View All</button>
+                </div>
+
+                <a href="/logout"  class="outside">Logout</a>
+                
+              </div>
+            </div>
+        </div>     
+              <div id="addStudent" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Add New User</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>
+                  <form action="/stdcreating" method="POST" class="form animated bounceIn">                                      
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="stdfnameec">Firstname required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="First Name" name="fname" id="stdfnamec">
+                    </div>
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="stdlnameec">Lastname required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="Last Name" name="lname" id="stdlnamec">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdusrnmec">Username required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="Username" name="usrnm" id="stdusrnmc">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdemailec">Email required*</span>
+                      <i class="icon1 ion-ios-email"></i>
+                      <input class="input-field1" type="email" placeholder="Email" name="email" id="stdemailc">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stddeptec" style="color: green;">Dept optional*</span>
+                      <i class="icon1 ion-link"></i>
+                      <select name="Dept" id="stddeptc" class="input-field1">
+                        <option value="placeholder" disabled = "disabled" selected>Select Department</option>
+                        <option value="bcs&it">BCS & IT</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="sceince&arts">Sceince and Arts</option>
+                      </select>
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdpswec">Password required*</span>
+                      <i class="icon1 ion-ios-locked"></i>
+                      <input class=" input-field1" type="password" placeholder="Password" name="psw" id="stdpswc">
+                    </div>
+                    
+                    <div class="input-container3">                  
+                     <span class="inputerror" id="stdcpswec">Passwords must be match*</span>
+                      <i class="icon1 ion-ios-locked"></i>
+
+                      <input class="input-field1" type="password" placeholder="Confirm Password" name="cpsw" id="stdcpswc">
+                    </div>
+                    <button type="submit" class="btn" id="stdc">Register</button>
+                  </form>
+                  
+                </div>
+              </div>
+                            
+              <div id="update" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Update User</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>
+
+                  <form action="/admin/users/update" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="stdideu">ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" placeholder="ID" name="idUser" id="stdidu">
+                    </div>                      
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="stdfnameeu">Firstname required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="First Name" name="fname" id="stdfnameu">
+                    </div>
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="stdlnameeu">Lastname required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="Last Name" name="lname" id="stdlnameu">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdusrnmeu">Username required*</span>
+                      <i class="icon1 ion-ios-person"></i>
+                      <input class="input-field1" type="text" placeholder="Username" name="usrnm" id="stdusrnmu">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdemaileu">Email required*</span>
+                      <i class="icon1 ion-ios-email"></i>
+                      <input class="input-field1" type="email" placeholder="Email" name="email" id="stdemailu">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" style="color: green;">Department optional*</span>
+                      <i class="icon1 ion-link"></i>
+                      <select name="dept" id="studentDept" class="input-field1">
+                        <option value="placeholder" disabled = "disabled" selected>Select Department</option>
+                        <option value="bcs&it">BCS & IT</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="sceince&arts">Sceince and Arts</option>
+                      </select>
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="stdpsweu">Password required*</span>
+                      <i class="icon1 ion-ios-locked"></i>
+                      <input class=" input-field1" type="password" placeholder="Password" name="psw" id="stdpswu"> 
+                    </div>
+                    
+                    <div class="input-container1">                  
+                     <span class="inputerror" id="stdcpsweu">Passwords must be match*</span>
+                      <i class="icon1 ion-ios-locked"></i>
+
+                      <input class="input-field1" type="password" placeholder="Confirm Password" name="cpsw" id="stdcpswu">
+                    </div>
+                    <button type="submit" class="btn" id="stdu">Update</button>
+                  </form>
+                  
+                </div>
+              </div>
+              <div id="Viewall" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin"> View all Students </h6>
+                  <div class="alertAdmin animated bounceIn" style="display: none;">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  <iframe src="http://localhost:3000/admin/UsersTable" frameborder="0" width="100%" height="500px"></iframe>
+                </div>
+              </div>
+              <div id="addnewAdmin" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Add New Admin</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText"></h2>
+                  </div>
+                  <form action="/admincreating" method="POST" class="form animated bounceIn">
+                    <span class="inputerror1" id="fnameeac">Firstname required*</span>                
+                    <div class="input-container">
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="First Name" name="fname" id="fnamevac" autofocus>
+                    </div>
+                    <span class="inputerror1" id="lnameeac">Lastname required*</span>            
+                    <div class="input-container">
+
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="Last Name" name="lname" id="lnamevac">
+                    </div>
+                    <span class="inputerror1" id="usrnmeac">Username required*</span>
+                    <div class="input-container">
+
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="Username" name="usrnm" id="usrnmvac">
+                    </div>
+                    <span class="inputerror1" id="emaileac">Email required*</span>            
+                    <div class="input-container">
+
+                      <i class="icon ion-ios-email"></i>
+                      <input class="input-field" type="email" placeholder="Email" name="email" id="emailvac">
+                    </div>
+                    <span class="inputerror1" id="psweac">Password required*</span>
+                    <div class="input-container">
+
+                      <i class="icon ion-ios-locked"></i>
+                      <input class=" input-field" type="password" placeholder="Password" name="psw" id="pswvac">
+                    </div>
+               <span class="inputerror1" id="cpweac">not match*</span>
+                    <div class="input-container">
+       
+                      <i class="icon ion-ios-locked"></i>
+                      <input class="input-field" type="password" placeholder="Confirm Password" name="cpsw" id="cpswvac">
+                    </div>
+                    <button type="submit" class="btn" id="subac">Submit</button>
+                  </form>
+                  
+                </div>
+              </div>
+                            
+              <div id="updateadmin" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Update Admin </h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  
+                  <form action="/admin/update" method="POST" class="form animated bounceIn" id="myFormId">
+                    <span class="inputerror1" id="idveaup">ID required*</span>                
+                    <div class="input-container">
+                      <i class="icon ion-key"></i>
+                      <input class="input-field" type="text" placeholder="Enter ID" name="idAdmin" id="idvaup">
+                    </div>
+                    <span class="inputerror1" id="fnameveaup">Firstname required*</span>                
+                    <div class="input-container">
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="First Name" name="fname" id="fnamevaup">
+                    </div>
+                    <span class="inputerror1" id="lnameveaup">Lastname required*</span>            
+                    <div class="input-container">
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="Last Name" name="lname" id="lnamevaup">
+                    </div>
+                    <span class="inputerror1" id="usrnmveaup">Username required*</span>
+                    <div class="input-container">
+                      <i class="icon ion-ios-person"></i>
+                      <input class="input-field" type="text" placeholder="Username" name="usrnm" id="usrnmvaup">
+                    </div>
+                    <span class="inputerror1" id="emailveaup" >Email required*</span>            
+                    <div class="input-container">
+
+                      <i class="icon ion-ios-email"></i>
+                      <input class="input-field" type="email" placeholder="Email" name="email" id="emailvaup">
+                    </div>
+                    <span class="inputerror1" id="pswveaup">Password required*</span>
+                    <div class="input-container">
+                      <i class="icon ion-ios-locked"></i>
+                      <input class=" input-field" type="password" placeholder="Password" name="psw" id="pswvaup">
+                    </div>
+                  <span class="inputerror1" id="cpswveaup">not match*</span>
+                    <div class="input-container">
+                      <i class="icon ion-ios-locked"></i>
+                      <input class="input-field" type="password" placeholder="Confirm Password" name="cpsw" id="cpswvaup">
+                    </div>
+                    <button type="submit" class="btn" id="saup">Update</button>
+                  </form>
+                  </form>
+                  
+                </div>
+              </div>
+              <div id="Viewalladmins" class="tabcontent ">
+                <div class="adminField">
+                  <h6 class="addAdmin"> View all Admins </h6>
+                  <div class="alertAdmin animated bounceIn" style="display: none;">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  <% if(admins != null) { %>
+                  <table class="animated bounceIn">
+                    <tr>
+                      <th>#</th>
+                      <th>ID</th>
+                      <th>First name</th>
+                      <th>Last name</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th colspan="2">Actions</th>
+                    </tr>
+                    <tr>
+                      <%var count = 0;%>
+                      <% admins.forEach((admin)=>{ 
+                         count++;
+                        %>
+                      <td><%=count%></td>
+                      <td><%= admin._id %></td>
+                      <td><%= admin.fname %></td>
+                      <td><%= admin.lname %></td>
+                      <td><%= admin.username %></td>
+                      <td><%= admin.email %></td>
+                      <td><a href="/admin/update/<%=admin._id%>" class="update">Update</a></td>
+                      <td><a href="/admin/deletingadmin/<%=admin._id%>" class="delete">Delete</a></td>
+                    </tr>
+                    <% }) %>
+                    <% } %>
+                  </table>
+                </div>
+              </div>
+
+
+              <div id="Addquestions" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Add New Question</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/questioncreating" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class=" inputerror" id="titleeqc">Title required*</span>
+                      <i class="icon1 ion-paperclip"></i>
+                      <input class="input-field1" type="text" placeholder="Title" name="title" id="titleqc">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="tageqc">Tag required*</span>
+                      <i class="icon1 ion-link"></i>
+                      <input class="input-field1" type="text" id="tagqc" placeholder="Enter tags : example - html , css , javascript " name="tagname">
+                    </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="questeqc">Question required*</span>
+                    <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="btnqc">Ask</button>
+                  </form>
+                  
+                </div>
+              </div>
+                            
+              <div id="updatequestion" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Update Question</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/admin/question/update" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class=" inputerror" id="idequ">ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" placeholder="ID" name="QId" id="idqu">
+                    </div>
+
+                    
+                    <div class="input-container1">
+                      <span class=" inputerror" id="titleequ">Title required*</span>
+                        <i class="icon1 ion-paperclip"></i>
+                        <input class="input-field1" type="text" placeholder="Title" name="title" id="titlequ">
+                      </div>
+
+                    <div class="input-container1 cfield">                    
+                      <span class="inputerror" id="tagequ">Tag required*</span>
+                      <i class="icon1 ion-link"></i>
+                      <input class="input-field1" type="text" id="tagqu" placeholder="Enter tags : example - html , css , javascript " name="tagname">
+                    </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="questionequ">Question required*</span>
+                    <textarea name="UpdQ" id="UpdQ" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="qbtnu">Update</button>
+                  </form>
+                  
+                </div>
+              </div>
+              <div id="Viewallquestions" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin"> View all Questions </h6>
+                  <div class="alertAdmin animated bounceIn" style="display: none;">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  <iframe src="http://localhost:3000/admin/questionTable" frameborder="0" width="100%" height="500px"></iframe>
+                </div>
+              </div>
+
+              <!-- improve question section -->
+
+              <div id="imq" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Reply Question</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/replycreating" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="rqidce">Question ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" placeholder="Question ID" name="qid" id="rqidc">
+                    </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="replyTextce">Text required*</span>
+                    <textarea name="iqc" id="iqc" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="rbtnc">Reply</button>
+                  </form>
+                  
+                </div>
+              </div>
+                            
+              <div id="uimq" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Update Improve Question Text </h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/admin/reply/update" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class=" inputerror" id="rrideu">ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" placeholder="ID" name="rid" id="rridu">
+                    </div>
+
+                    <div class="input-container1">
+                      <span class=" inputerror" id="rqideu">Question ID required*</span>
+                        <i class="icon1 ion-key"></i>
+                        <input class="input-field1" id="rqidu" type="text" placeholder="Question ID" name="qid">
+                      </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="rue">Text required*</span>
+                    <textarea name="uiqc" id="uiqc" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="btnru">Update</button>
+                  </form>
+                  
+                </div>
+              </div>
+              <div id="vimq" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin"> View all Improve Questions Text </h6>
+                  <div class="alertAdmin animated bounceIn" style="display: none;">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  <iframe src="http://localhost:3000/admin/replyTable" frameborder="0" width="100%" height="500px"></iframe>
+                </div>
+              </div>
+              <!-- improve question section  -->
+              <div id="addans" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Add New Answer</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/answercreating" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="ansqidce">Question ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" id="ansqidc" placeholder="Question ID" name="qid">
+                    </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="ansce">Answer required*</span>
+                    <textarea name="newAns" id="newAns" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="ansc">Answer</button>
+                  </form>
+                  
+                </div>
+              </div>
+                            
+              <div id="updateans" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin">Update Answer</h6>
+                  <div class="alertAdmin animated bounceIn">
+                    <h2 class="alerText">New Admin Added Successfully</h2>
+                  </div>               
+                  <form action="/admin/answer/update" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class="inputerror" id="anside">Answer ID required*</span>
+                      <i class="icon1 ion-key"></i>
+                      <input class="input-field1" type="text" id="ansid" placeholder="Answer ID" name="aid">
+                    </div>
+
+                    <div class="input-container1">
+                      <span class="inputerror" id="ansqidue">Question ID required*</span>
+                        <i class="icon1 ion-key"></i>
+                        <input class="input-field1" type="text" id="ansqidu" placeholder="Question ID" name="qid">
+                      </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror" id="ansue">Answer required*</span>
+                    <textarea name="ansup" id="ansup" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="ansubtn">Update</button>
+                  </form>
+                  
+                </div>
+              </div>
+              <div id="Viewallans" class="tabcontent">
+                <div class="adminField">
+                  <h6 class="addAdmin"> View all Answer </h6>
+                  <div class="alertAdmin animated bounceIn" style="display: none;">
+                    <h2 class="alerText">New Admin updated Successfully</h2>
+                  </div>
+                  <iframe src="http://localhost:3000/admin/answerTable" frameborder="0" width="100%" height="500px"></iframe>
+                </div>
+              </div>
+              
+
+              <div id="dash" class="tabcontent ">
+                <div class="content-1">
+                  <h3>Dashboard</h3>
+                  <p>this is Quick overview of some features</p>
+                </div>
+
+                <div class="content-2 ">
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc"><i class="ion-ios-stopwatch-outline"></i></span>
+                    <h4 class="theRest">Today's Questions</h4>
+                    <%if(todayQuestions != null){%>
+                      <h5 class="theRest"><%=todayQuestions%></h5><p>&nbsp;</p>
+                      <%} else {%>
+                        <h5 class="theRest">0</h5><p>&nbsp;</p>
+                        <%}%>
+                  </div>
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc"><i class="ion-ios-calendar-outline"></i></span>
+                    <h4 class="theRest">This Week's Questions</h4>
+                    <%if(weaksQuestion != null){%>
+                    <h5 class="theRest"><%=weaksQuestion%></h5><p>&nbsp;</p>
+                    <%} else {%>
+                      <h5 class="theRest">0</h5><p>&nbsp;</p>
+                      <%}%>
+                  </div>
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc"><i class="ion-stats-bars"></i></span>
+                    <h4 class="theRest">Total Questions</h4>
+                    <%if(countAllquestion != null){%>
+                    <h5 class="green"><%=countAllquestion%></h5><p>&nbsp;</p>
+                    <%} else {%>
+                      <h5 class="green">0</h5><p>&nbsp;</p>
+                      <%}%>
+                  </div>
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc"><i class="ion-ios-bolt-outline"></i></span>
+                    <h4 class="theRest">Total Answers</h4>
+                    <%if(countans != null){%>
+                    <h5 class="theRest"><%=countans%></h5><p>&nbsp;</p>
+                    <%} else {%>
+                      <h5 class="theRest">0</h5><p>&nbsp;</p>
+                      <%}%>
+                  </div>
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc"><i class="ion-ios-people-outline"></i></span>
+                    <h4 class="theRest">Users</h4>
+                    
+                    <%if(usersCount != null){%>
+                    <h5 class="green"><%=usersCount%></h5><p>&nbsp;</p>
+                    <%} else {%>
+                      <h5 class="green">0</h5><p>&nbsp;</p>
+                      <%}%>
+                  </div>
+                  <div class="textplace animated heartBeat">
+                    <span class="icondesc animated hearBeat"><i class="ion-ios-time-outline"></i></span>
+                    <h4 class="theRest">Average Time</h4>
+                    <h5 class="h5">2:31</h5> <p>&nbsp;</p>
+                  </div>
+                </div>
+
+                <div class="content-3">
+                  <div class="righTop">
+                    <h6 class="h6">Today's Rate</h6>
+                    <p class="updateHour">Last update 1 hour ago</p>
+                  </div>
+
+                  <div class="totalToday">
+                    <h6 class="h62 animated tada">3017</h6>
+                    <p class="todayTotaltext">Today's Total</p>
+                  </div>
+
+                  <div class="imgArea">
+                    <!-- <img src="./res/img/entrepreneur-1340649.jpg" alt=""> -->
+                  </div>
+
+                  <div class="leftAreImg">  
+                    <!-- <img src="./res/img/chart.png" alt=""> -->
+                  </div>
+                  <h6 class="pageViewText">Page View</h6>
+                </div>
+
+                <div class="content-4">
+                  <h6 class="menudash">menu</h6>
+                  <span class="close"><i class="ion-ios-more"></i></span>
+                  <div class="works">
+                  <h6 class="textline animated animated fadeInDown"><a href="#" onclick="openCity(event, 'dash')">Dashboard</a></h6>
+                  </div>
+
+                  <div class="works animated fadeInDown">
+                    <h6 class="textline animated slideInDown"><a href="#" onclick="openCity(event, 'Viewalladmins')">Admins</a></h6>
+                  </div>
+
+                  <div class="works animated fadeInDown">
+                    <h6 class="textline"><a href="#" onclick="openCity(event, 'Viewall')">Students</a></h6>
+                  </div>
+
+                  <div class="works animated fadeInDown">
+                    <h6 class="textline"><a href="#" onclick="openCity(event, 'Viewallquestions')">Questions</a></h6>
+                  </div>
+                  <div class="works animated fadeInDown">
+                    <h6 class="textline"><a href="#" onclick="openCity(event, 'Viewallans')">Answers</a></h6>
+                  </div>
+                </div>
+
+                <div class="content-5">
+                  <h6 class="activty">Today activty</h6>
+                  <div class="todayActivity">
+                    <h6 class="activitytime">2:52:22</h6>
+                    <p class="textActiveTime">Active Time</p>
+                  </div>
+
+                  <div class="todayActivity">
+                    <h6 class="activitytime">68%</h6>
+                    <p class="textActiveTime">Completed</p>
+                  </div>
+
+                  <div class="todayActivity">
+                    <h6 class="activitytime">0:52:32</h6>
+                    <p class="textActiveTime">Break Time</p>
+                  </div>
+
+                  <div class="activtyBack">
+                    
+                  </div>
+                </div>
+
+                <div class="content-6">
+                  <h6 class="status">Status</h6>
+                  <div class="lines" id="lines1">
+                    <p>100</p>
+                  </div>
+
+                  <div class="lines" id="lines2">
+                    
+                  </div>
+
+                  <div class="linesback">
+                    
+                  </div>
+                </div>
+
+                <%if(adminData.profile != null){%>
+                <div class="content-7" style="background-image: url(../uploads/<%=adminData.profile%>);">  
+                </div>
+                <%} else{%>
+                  <div class="content-7" style="background-image: url(../img/admin1.png);">  
+                  </div>
+                  <%}%>
+              </div>
+              <div id="id01" class="modal">
+  
+                <form class="modal-content animate" action="/admin/profile" method="post" enctype="multipart/form-data">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <%if(adminData.profile != null){%>
+                    <img src="/uploads/<%=adminData.profile%>"  alt="Avatar" class="avatar" style="width: 200px; height: 200px;">
+                    <%} else{%>
+                    <img src="/img/admin1.png"  alt="Avatar" class="avatar" style="width: 200px; height: 200px;">
+                    <%}%>
+                  </div>
+              
+                  <div class="container">
+                    <span class="error" id="erruname" style="color: red; font-size: 12px;" ></span>
+               
+                    <input type="text" class="uname" placeholder="Enter Username" id="uname" name="uname" required value="<%=adminData.username%>">
+              
+                    <span class="error" id="errimg" style="color: red; font-size: 12px;"></span>
+                    <input type="file" name="avatar" id="fileToUpload">
+                      
+                    <button type="submit" class="pbupdate" id="btnprofile">Update</button>
+                  </div>
+              
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                  </div>
+                </form>
+              </div>
+              <script>
+              // Get the modal
+              var modal = document.getElementById('id01');
+              
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                  if (event.target == modal) {
+                      modal.style.display = "none";
+                  }
+              }
+
+        function myFunction() {
+          myVar = setTimeout(showPage, 3000);
+        }
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+        document.getElementById("mdiv").style.display = "block";
+        }
+             </script>
+    <script src="/js/index.js"></script>
+    <script src="/js/validator.js"></script>
+    <script src="/js/studentV.js"></script>
+    <script src="/js/questionsV.js"></script>
+    <script src="/js/replyV.js"></script>
+    <script src="/js/answerV.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script>
+     CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.entities = false; 
+    CKEDITOR.config.fillEmptyBlocks = false;
+    CKEDITOR.config.tabSpaces = 0;
+    CKEDITOR.config.basicEntities = false;
+    CKEDITOR.config.entities_greek = false; 
+    CKEDITOR.config.entities_latin = false; 
+      CKEDITOR.replace('content');
+      CKEDITOR.replace('UpdQ'); 
+      CKEDITOR.replace('newAns'); 
+      CKEDITOR.replace('ansup'); 
+      CKEDITOR.replace('uiqc'); 
+      CKEDITOR.replace('iqc'); 
+      CKEDITOR.instances.content.getData();
+      var editor1 = CKEDITOR.instances.content;
+      var editor2 = CKEDITOR.instances.UpdQ;
+
+      // question validation
+function questionValidation(){
+    var textbox_data = CKEDITOR.instances.content.getData();
+if(textbox_data > 599){
+    questeqc.innerHTML = "question must be less than 600 charecters*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    questeqc.innerHTML = "question must be greater than 5 charecters*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    questeqc.innerHTML = "Question required*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop';
+} else{
+    questeqc.innerHTML = "";
+    btnqc.removeAttribute('disabled');
+    btnqc.style.cursor = 'pointer'
+}
+}
+
+
+// question Update validation
+function questionUpValidation(){
+    var textbox_data = CKEDITOR.instances.UpdQ.getData();
+if(textbox_data > 599){
+    questionequ.innerHTML = "question must be less than 600 charecters*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    questionequ.innerHTML = "question must be greater than 5 charecters*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    questionequ.innerHTML = "Question required*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop';
+} else{
+    questionequ.innerHTML = "";
+    qbtnu.removeAttribute('disabled');
+    qbtnu.style.cursor = 'pointer'
+}
+}
+      editor1.on('key' , (e)=>{
+        questionValidation();
+      })
+
+
+      editor2.on('key' , (e)=>{
+        questionUpValidation();
+      })
+
+      var qbtnu = document.getElementById('qbtnu');
+      var btnqc = document.getElementById('btnqc');
+      
+btnqc.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    questionValidation();
+    titleqc.focus();
+    titleValidation();
+    tagsValidation();
+});
+
+qbtnu.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    questionUpValidation();
+    titleUpValidation();
+    tagsUpValidation();
+    idUpValidation();
+});
+
+
+// reply creating
+
+var editor3 = CKEDITOR.instances.iqc; 
+var editor4 = CKEDITOR.instances.uiqc;
+var btnru = document.getElementById('btnru');
+var rbtnc = document.getElementById('rbtnc');
+
+// reply validation function
+function replyValidation(){
+    var textbox_data = CKEDITOR.instances.iqc.getData();
+if(textbox_data > 99){
+    replyTextce.innerHTML = "Reply must be less than 100 charecters*";
+    rbtnc.setAttribute('disabled' , 'disabled');
+    rbtnc.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    replyTextce.innerHTML = "Reply must be greater than 5 charecters*";
+    rbtnc.setAttribute('disabled' , 'disabled');
+    rbtnc.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    replyTextce.innerHTML = "Text  required*";
+    rbtnc.setAttribute('disabled' , 'disabled');
+    rbtnc.style.cursor = 'no-drop';
+} else{
+    replyTextce.innerHTML = "";
+    rbtnc.removeAttribute('disabled');
+    rbtnc.style.cursor = 'pointer'
+}
+}
+
+// reply Update validation 
+function replyUpValidation(){
+    var textbox_data = CKEDITOR.instances.uiqc.getData();
+if(textbox_data > 99){
+  rue.innerHTML = "Reply must be less than 100 charecters*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+  rue.innerHTML = "Reply must be greater than 5 charecters*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+  rue.innerHTML = "Text  required*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop';
+} else{
+  rue.innerHTML = "";
+    btnru.removeAttribute('disabled');
+    btnru.style.cursor = 'pointer'
+}
+}
+
+
+
+editor3.on('key' , (e)=>{
+        replyValidation();
+      })
+
+editor4.on('key' , (e)=>{
+        replyUpValidation();
+      })
+
+      
+rbtnc.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    replyValidation();
+    QuestionIdValidation();
+});
+
+btnru.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    ReplyIdUpValidation();
+    QuestionRIdUpValidation();
+});
+
+// =============================================================
+// Answer section
+
+// reply creating
+
+var editor5 = CKEDITOR.instances.newAns; 
+var editor6 = CKEDITOR.instances.ansup;
+var ansc = document.getElementById('ansc');
+var ansubtn = document.getElementById('ansubtn');
+
+// answer validation function
+function ansValidation(){
+    var textbox_data = CKEDITOR.instances.newAns.getData();
+if(textbox_data > 799){
+    ansce.innerHTML = "Answer must be less than 800 charecters*";
+    ansc.setAttribute('disabled' , 'disabled');
+    ansc.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    ansce.innerHTML = "Answer must be greater than 5 charecters*";
+    ansc.setAttribute('disabled' , 'disabled');
+    ansc.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    ansce.innerHTML = "Text  required*";
+    ansc.setAttribute('disabled' , 'disabled');
+    ansc.style.cursor = 'no-drop';
+} else{
+    ansce.innerHTML = "";
+    ansc.removeAttribute('disabled');
+    ansc.style.cursor = 'pointer'
+}
+}
+
+// answer Update validation 
+function ansUpValidation(){
+    var textbox_data = CKEDITOR.instances.ansup.getData();
+if(textbox_data > 799){
+    ansue.innerHTML = "Answer must be less than 800 charecters*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    ansue.innerHTML = "Answer must be greater than 5 charecters*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    ansue.innerHTML = "Text  required*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop';
+} else{
+    ansue.innerHTML = "";
+    ansubtn.removeAttribute('disabled');
+    ansubtn.style.cursor = 'pointer'
+}
+}
+
+
+
+
+editor5.on('key' , (e)=>{
+        ansValidation();
+        QuestionAnsIdValidation();
+      })
+
+editor6.on('key' , (e)=>{
+        ansUpValidation();
+      })
+
+      
+ansc.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    ansValidation();
+});
+
+ansubtn.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    ansUpValidation();
+    ansIdUpValidation();
+    QuestionAnsIdUpValidation();
+});
+
+
+    </script>
+</body>
+</html>

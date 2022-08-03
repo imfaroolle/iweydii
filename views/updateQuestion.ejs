@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/updateQ.css">
+    <title>QA Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+         <h2 class="H2Title">Update Questions Data</h2>
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <form action="/admin/question/update" method="POST" class="form animated bounceIn">                   
+              <span class="inputerror1" id="idequ"></span>                
+              <div class="input-container">
+                <i class="icon ion-ios-person"></i>
+                <input class="input-field" type="text" placeholder="Enter ID" name="QId" id="idqu" value="<%=DataUpdate._id%>">
+              </div>
+
+              <div class="input-container1">
+              <span class=" inputerror" id="titleequ"></span>
+                <i class="icon1 ion-paperclip"></i>
+                <input class="input-field1" type="text" placeholder="Title" name="title" id="titlequ" value="<%=DataUpdate.title%>">
+              </div>
+
+              <div class="input-container1">                    
+                <span class="inputerror" id="tagequ"></span>
+                <i class=" ion-link icn"></i>
+                <input class="input-field1 field2" type="text" id="tagqu" placeholder="Enter tags : example - html , css , javascript " name="tagname" value="<%=DataUpdate.tags%>">
+              </div>
+
+              <div class="input-container2">                    
+                <span class="inputerror" id="questionequ"></span>
+              <textarea name="UpdQ" id="UpdQ" cols="30" rows="10"></textarea>
+              </div>
+              <button type="submit" class="btn" id="qbtnu">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/js/questionUpdV.js"></script>
+    <script>
+      CKEDITOR.replace('UpdQ');
+      CKEDITOR.config.autoParagraph = false;
+      CKEDITOR.instances.UpdQ.setData("<%=DataUpdate.question%>");
+      
+     // question Update validation
+
+    </script>
+<% } %>
+    <script>
+      var editor2 = CKEDITOR.instances.UpdQ;
+    function questionUpValidation(){
+    var textbox_data = CKEDITOR.instances.UpdQ.getData();
+if(textbox_data > 599){
+    questionequ.innerHTML = "question must be less than 600 charecters*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    questionequ.innerHTML = "question must be greater than 5 charecters*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    questionequ.innerHTML = "Lastname required*";
+    qbtnu.setAttribute('disabled' , 'disabled');
+    qbtnu.style.cursor = 'no-drop';
+} else{
+    questionequ.innerHTML = "";
+    qbtnu.removeAttribute('disabled');
+    qbtnu.style.cursor = 'pointer'
+}
+}
+
+editor2.on('key' , (e)=>{
+        questionUpValidation();
+      })
+
+var qbtnu = document.getElementById('qbtnu');
+qbtnu.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    titlequ.focus();
+    questionUpValidation();
+    titleUpValidation();
+    tagsUpValidation();
+    idUpValidation();
+});
+    </script>
+</body>
+</html>

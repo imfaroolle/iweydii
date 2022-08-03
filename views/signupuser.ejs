@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Signup-QA-Forum</title>
+    <style>
+        body{
+            background-color: #fff;
+        }
+        
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .Maincontainer{
+            background-color: #fff;
+            width: 75%;
+            height: 650px;
+            margin-left: 13%;
+            margin-top: 2%;
+            box-shadow: 4px 3px 14px 4px #837b7b;
+        }
+    </style>
+</head>
+<body>
+    <div class="Maincontainer">
+        &nbsp;
+        <h3 style="text-align: center; font-size: 30px; color: #263645;">Sign Up</h3>
+        &nbsp;
+        <p style="text-align: center;color: #263645;">Please fill in this form to create an account</p>
+
+        <form action="/signup" method="POST" class="form animated bounceIn">                                      
+
+            <div class="input-container1">
+            <span class="inputerror" id="stdfnameec">Firstname required*</span>
+              <i class="icon1 ion-ios-person"></i>
+              <input class="input-field1" type="text" placeholder="First Name" name="fname" id="stdfnamec">
+            </div>
+
+            <div class="input-container1">
+            <span class="inputerror" id="stdlnameec">Lastname required*</span>
+              <i class="icon1 ion-ios-person"></i>
+              <input class="input-field1" type="text" placeholder="Last Name" name="lname" id="stdlnamec">
+            </div>
+
+            <div class="input-container1">                    
+              <span class="inputerror" id="stdusrnmec">Username required*</span>
+              <i class="icon1 ion-ios-person"></i>
+              <input class="input-field1" type="text" placeholder="Username" name="usrnm" id="stdusrnmc">
+            </div>
+
+            <div class="input-container1">                    
+              <span class="inputerror" id="stdemailec">Email required*</span>
+              <i class="icon1 ion-ios-email"></i>
+              <input class="input-field1" type="email" placeholder="Email" name="email" id="stdemailc">
+            </div>
+
+            <div class="input-container1">                    
+              <span class="inputerror" id="stddeptec" style="color: green;">Dept optional*</span>
+              <i class="icon1 ion-link"></i>
+              <select name="Dept" id="stddeptc" class="input-field1">
+                <option value="placeholder" disabled = "disabled" selected>Select Department</option>
+                <option value="bcs&it">BCS & IT</option>
+                <option value="engineering">Engineering</option>
+                <option value="sceince&arts">Sceince and Arts</option>
+              </select>
+            </div>
+
+            <div class="input-container1">                    
+              <span class="inputerror" id="stdpswec">Password required*</span>
+              <i class="icon1 ion-ios-locked"></i>
+              <input class=" input-field1" type="password" placeholder="Password" name="psw" id="stdpswc">
+            </div>
+            
+            <div class="input-container3">                  
+             <span class="inputerror" id="stdcpswec">Passwords must be match*</span>
+              <i class="icon1 ion-ios-locked"></i>
+
+              <input class="input-field1" type="password" placeholder="Confirm Password" name="cpsw" id="stdcpswc">
+            </div>
+            <button type="submit" class="btn" id="stdc">Register</button>
+          </form>
+    </div>
+    <script src="/js/studentV.js"></script>
+</body>
+</html>

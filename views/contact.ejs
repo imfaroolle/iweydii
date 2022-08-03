@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <title>Help-QA-Forum</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background-color: #2c3e50;
+            width: 80%;
+            height: 500px;
+            margin-left: 10%;
+            margin-top: 1%;
+            box-shadow: 10px 10px 14px 4px #837b7b;
+        }
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+        }
+
+        input[type=text]:focus , textarea:focus , select:focus{
+            border-color: #2c3e50;
+            outline-color: #2c3e50;
+        }
+
+        input[type=submit] {
+        background-color: #2c3e50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+        margin-bottom: 2%;
+        }
+
+        input[type=submit]:hover {
+        background-color: #2c3e50;
+        }
+
+        .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        }
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #2c3e50;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+    </style>
+</head>
+<body onload="myFunction()">
+    <div id="loader"></div>
+    <div class="container" id="mdiv" style="display: none;">
+      <%if(error !== ""){%>
+        <h3>Your Information was sent</h3>
+        <%} else{%>
+      <h3>To help you let us know your problem</h3>
+      <%}%>
+
+        <div class="container">
+        <form action="/send" method="POST">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+           <option value="select" disabled>Select your country</option>
+           <option value="somalia" selected>Somalia</option>
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+            </select>
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+
+    </div>
+
+    <script>
+        function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+ document.getElementById("mdiv").style.display = "block";
+}
+    </script>
+</body>
+</html>

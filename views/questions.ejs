@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/viewQA.css">
+    <title>Question-Q-A Forum</title>
+</head>
+<body>
+
+      <div class="contianerMain">
+          <div class="headerSection">
+            <header class="header">
+                <nav>
+                  <div class="navibar">
+                    <!-- <ul>
+                      <li><a href="#" class="open">Home</a></li>
+                      <li><a href="#">Queries</a></li>
+                      <li><a href="#">Posts</a></li>
+                      <li><a href="#">About us</a></li>
+          
+                    </ul> -->
+                    <!-- <form>
+                        <input type="text" name="search" placeholder="Search..">
+                    </form> -->
+                    <h5 class="logotxt">QA-Forum</h5>
+                  </div>
+                  <div class="imgcircle">
+                    <%if(user.profile == null){%>
+                      <img src="/img/profile.jpg" alt="User image" id="clickImg">
+                      <%}else{%>
+                        <img src="/uploads/<%=user.profile%>" alt="User image" id="clickImg">
+                      <%}%>
+                      <div class="options animated FadeIn" id="options">
+                        <div class="profilesection">
+                          <%if(user.profile !== null){%>
+                          <img src="/uploads/<%=user.profile%>" alt="User image" class="leftImg">
+                          <%}else{%>
+                          <img src="/img/profile.jpg" alt="User image" class="leftImg">
+                          <%}%>
+                        <span class="nameEEE"><%= user.username%></span>
+                        <span class="email"><%= user.email %></span>
+                      </div>
+                      <div class="partSections">
+                        <button class="textInParts button"onclick="document.getElementById('id01').style.display='block'">Profile</button>
+                        
+                      </div>
+                      <div class="partSections">
+                        <h6 class="textInParts"><a href="/user/logout">Logout</a></h6>
+                      </div>
+                      <div class="partSections">
+                        <h6 class="textInParts"><a href="/user/logoutAll">Logout All</a></h6>
+                      </div>
+                    </div>
+                  </div>
+          
+                </nav>
+              </header>
+          </div>
+          <% if(question !== null){ %>
+          <div class="rightContainer">
+              <div class="right-in-rightContainer">
+                  <div class="questionSection">
+                    <a href="user/askpublicquestion" class="askQuestion1">Ask Question</a>
+                    <h6 class="questionTitle">
+                      <%= question.title %>
+                    </h6>
+                  </div>
+
+                  <div class="detailsSection">
+                      <div class="text">
+                        <h6 class="details">Asked</h6>
+                        <h6 class="bold"><%=timeAsked%></h6>
+                        <h6 class="details">Viewed</h6>
+                        <%if(counter > 999){
+                          counter = '1k';} else{%>
+                        <h6 class="bold"><%=counter%> times</h6>
+                        <%}%>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="center-in-rightContainer">
+                  <div class="rightCenter">
+                      <div class="questionPosition">
+                          <div class="user">
+                            <%if(question.profile != null){%>
+                            <img src="/uploads/<%=question.profile%>" class="imgUser" alt="">
+                            <%} else{%>
+                              <img src="/img/profile.jpg" class="imgUser" alt="">
+                              <%}%>
+                              <h4 class="info1">Asked by : <a href="#"><%= question.askedby%></a></h4>
+                          </div>
+                          <h6 class="questionWrite">
+                            <%= question.question %>
+                          </h6>
+                          <a href="/reply/<%= question._id %>" class="replyThis">Reply</a>
+                      </div>
+                      <% } %>
+                      <% if(allreply !== null){ %>
+                        <% allreply.forEach((allreply)=>{  %>
+                      <div class="replies">
+                        <a href="#" class="replyUsers"><%= allreply.replyby %></a>
+                       <h6 class="replytext">
+                        <%= allreply.reply %>
+                            </h6> 
+                    </div>
+                    <% }) %>
+                    <% } %>
+                    <% if(allans !== null){ %>
+                    <div class="answers">
+                        <div class="answersHeader">
+                            <h6 class="asnheader"><%=count%></h6>
+                            <div class="btn-group">
+                              <button>&nbsp;</button>
+                              <button>&nbsp;</button>
+                              <button>&nbsp;</button>
+                              </div>
+                        </div>
+                        <% allans.forEach((allans)=>{  %>
+                        <div class="answerSelf">
+
+                          <h6 class="questionWrite">
+                            <%= allans.answer %>
+                          </h6>
+                            <div class="userAns">
+                              <%if(allans.profile != null){%>
+                              <img src="/uploads/<%=allans.profile%>" class="imgUser" alt="">
+                              <%} else{%>
+                                <img src="/img/profile.jpg" class="imgUser" alt="">
+                                <%}%>
+                                <h4 class="info1"> Answ from : <a href="#"><%= allans.answerby %></a></h4>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                        <% } %>
+                        <div class="yourAns">
+                            <div class="yourAnsHead">
+                                <h6 class="yourAnstxt">Your Answer</h6>
+                            </div>
+                            <div class="textarePosition">
+                              <form action="/useranswer/<%= question._id %>" method="POST">
+                                <span class="useranse" id="useranse" style="color: red; font-size: 12px;"></span>
+                                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                                <input type="submit" value="Post Your Answer" class="btnAns" id="ansbtn">
+                              </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                  </div>
+                  <div class="leftCenter">
+                    <h4 class="titleInRight">
+                      Recent Asked Questions ?
+                    </h4>
+                  <% allQuestions.forEach((allQuestions)=>{  %>
+                    <div class="textLinks">
+                        <a href="/questions/<%=allQuestions._id%>"><%=allQuestions.title%> ?</a>
+                    </div>
+                    <%})%>
+                  </div>
+              </div>
+
+              <div class="left-in-right-container">
+
+              </div>
+          </div>
+          <div class="leftSided">
+            <div class="verticalnav">
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/allquestions">All Questions</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/help">Help</a></li>
+                </ul>
+                  </div>
+          </div>
+          
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/user/profile" method="post" enctype="multipart/form-data">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <%if(user.profile != null){%>
+      <img src="/uploads/<%=user.profile%>"  alt="Avatar" class="avatar" style="width: 200px; height: 200px;">
+      <%} else{%>
+      <img src="/img/profile.jpg"  alt="Avatar" class="avatar" style="width: 200px; height: 200px;">
+      <%}%>
+    </div>
+
+    <div class="container">
+      <span class="error" id="erruname" style="color: red; font-size: 12px;" ></span>
+ 
+      <input type="text" placeholder="Enter Username" id="uname" name="uname" required value="<%=user.username%>">
+
+      <span class="error" id="errimg" style="color: red; font-size: 12px;"></span>
+      <input type="file" name="avatar" id="fileToUpload">
+        
+      <button type="submit" class="pbupdate" id="btnprofile">Update</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+      </div>
+      
+      <script src="/js/client.js"></script>
+      <script src="/ckeditor/ckeditor.js"></script>
+      <script>
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.entities = false; 
+    CKEDITOR.config.fillEmptyBlocks = false;
+    CKEDITOR.config.tabSpaces = 0;
+    CKEDITOR.config.basicEntities = false;
+    CKEDITOR.config.entities_greek = false; 
+    CKEDITOR.config.entities_latin = false;
+                CKEDITOR.replace('content');
+                var ansbtn = document.getElementById('ansbtn');
+                var useranse = document.getElementById('useranse');
+                ansbtn.style.cursor = 'no-drop';
+function questionValidation(){
+    var textbox_data = CKEDITOR.instances.content.getData();
+if(textbox_data.length > 599){
+  useranse.innerHTML = "Answer must be less than 600 charecters*";
+  ansbtn.setAttribute('disabled' , 'disabled');
+  ansbtn.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data.length < 5){
+  useranse.innerHTML = "Answer must be greater than 5 charecters*";
+    ansbtn.setAttribute('disabled' , 'disabled');
+    ansbtn.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+  useranse.innerHTML = "Answer required*";
+    ansbtn.setAttribute('disabled' , 'disabled');
+    ansbtn.style.cursor = 'no-drop';
+} else{
+  useranse.innerHTML = "";
+    ansbtn.removeAttribute('disabled');
+    ansbtn.style.cursor = 'pointer'
+}
+}
+                CKEDITOR.instances.content.on("key" , (e)=>{
+                  questionValidation();
+                })
+
+                ansbtn.addEventListener('mouseenter' , (e)=>{
+                    e.preventDefault();
+                    questionValidation();
+                });
+
+      </script>
+</body>
+</html>

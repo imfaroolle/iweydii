@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html{
+    background-color: #ffff;
+    font-family: "lato" , "arial" , sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+  }
+
+.mainContainer{
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.question-form{
+    background-color: #fff;
+    width: 80%;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.headerQuestion{
+    float: left;
+    background-color: #fff;
+    width: 30%;
+    height: 10%;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    position: relative;
+    line-height: 10%;
+    padding: 25px;
+    color: #1a252f;
+    display: block;
+}
+
+.place{
+    background-color: #fff;
+    width: 80%;
+    height: 89%;
+    display: inline-block;
+    box-shadow: 4px 8px 16px #888888;
+}
+
+
+
+
+/* error texts styling */
+
+.inputerror{
+    color: #d35400;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    position: relative;
+    right: 35%;
+  }
+
+  .inputerror1{
+    color: #d35400;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    position: relative;
+    right: 35%;
+    left: -41%;
+  }
+  
+  /* form2 styles */
+  
+  .input-container1 {
+    display: inline-block;
+    width: 48%;
+    margin-bottom: 25px;
+    margin-left: 10px;
+  }
+  
+  .input-container2 {
+    display: inline-block;
+    width: 97%;
+    margin-bottom: 25px;
+    margin-left: 4px;
+  }
+  
+  /* Style the form icons */
+  .icon1 {
+    padding: 6px 10px;
+    background: #2c3e50;
+    color: white;
+    min-width: 55px;
+    text-align: center;
+    position: relative;
+    left: 4px;
+    top: 1px;
+  }
+
+  .icon2{
+    padding: 6px 6px;
+    background: #2c3e50;
+    color: white;
+    min-width: 55px;
+    text-align: center;
+    position: relative;
+    left: 4px;
+    top: 1px;
+  }
+
+  
+  /* Style the input fields */
+  .input-field1 {
+    width: 92%;
+    padding: 4px;
+    outline: none;
+  }
+  
+  .input-field1:focus {
+    border: 2px solid #2c3e50;
+  }
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+  
+  .form{
+    margin-top: 5%;
+  }

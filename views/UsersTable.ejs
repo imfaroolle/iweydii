@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/tables.css">
+    <title>Q-A Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <table class="animated bounceIn">
+                <tr>
+                  <th>#</th>
+                  <th>ID</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Dept</th>
+                  <th colspan="2">Actions</th>
+                </tr>
+                <% 
+                var count = 0;
+                DataUpdate.forEach((std)=>{ 
+                  count++;
+                  %>
+                <tr>
+                  <td><%= count %></td>
+                  <td><%=std._id%></td>
+                  <td><%=std.fname%></td>
+                  <td><%=std.lname%></td>
+                  <td><%=std.username%></td>
+                  <td><%=std.email%></td>
+                  <td><%=std.dept%></td>
+                  <td><a href="/admin/users/update/<%=std._id%>" target="_blank" class="update">Update</a></td>
+                  <td><a href="/admin/users/delete/<%=std._id%>" target="_blank" class="delete">Delete</a></td>
+                </tr>
+                <%})}%>
+               
+              </table>
+        </div>
+    </div>
+</body>
+</html>

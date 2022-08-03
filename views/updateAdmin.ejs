@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/update.css">
+    <title>QA Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+         <h2 class="H2Title">Update Admin Data</h2>
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <form action="/admin/update" method="POST" class="form animated bounceIn">
+                <span class="inputerror1" id="idveaup"></span>                
+                <div class="input-container">
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="Enter ID" name="idAdmin"  value="<%=DataUpdate._id%>" id="idvaup">
+                </div>
+                <span class="inputerror1" id="fnameveaup"></span>                
+                <div class="input-container">
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="First Name" name="fname"  value="<%=DataUpdate.fname%>" id="fnamevaup">
+                </div>
+                <span class="inputerror1" id="lnameveaup"></span>            
+                <div class="input-container">
+
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="Last Name" name="lname" value="<%=DataUpdate.lname%>" id="lnamevaup">
+                </div>
+                <span class="inputerror1" id="usrnmveaup"></span>
+                <div class="input-container">
+
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="Username" name="usrnm" value="<%=DataUpdate.username%>" id="usrnmvaup">
+                </div>
+                <span class="inputerror1" id="emailveaup"></span>            
+                <div class="input-container">
+
+                  <i class="icon ion-ios-email"></i>
+                  <input class="input-field" type="email" placeholder="Email" name="email" value="<%=DataUpdate.email%>" id="emailvaup">
+                </div>
+                <span class="inputerror1" id="pswveaup"></span>
+                <div class="input-container">
+
+                  <i class="icon ion-ios-locked"></i>
+                  <input class=" input-field" type="password" placeholder="Password" name="psw" value="<%=DataUpdate.pass%>" id="pswvaup"> 
+                </div>
+              <span class="inputerror1" id="cpswveaup"></span>
+                <div class="input-container">
+   
+                  <i class="icon ion-ios-locked"></i>
+                  <input class="input-field" type="password" placeholder="Confirm Password" name="cpsw" value="<%=DataUpdate.pass%>" id="cpswvaup">
+                </div>
+                <button type="submit" class="btn" id="saup">Update</button>
+              </form>
+              <% } %>
+        </div>
+    </div>
+    <script src="/js/updateAdminV.js"></script>
+</body>
+</html>

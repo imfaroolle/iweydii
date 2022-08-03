@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600;700&display=swap" rel="stylesheet">
+<title>About-QA-Forum</title>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+.Maincontainer{
+    background-color: #2c3e50;
+    width: 80%;
+    height: 1800px;
+    margin-left: 10%;
+    margin-top: 2%;
+    box-shadow: 3px 3px 14px 4px #837b7b;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  background-color: #fff;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container h2{
+    font-family: 'Source Code Pro', monospace;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #2c3e50;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+</style>
+</head>
+<body onload="myFunction()">
+    <div id="loader"></div>
+    <div class="mainAlpha" id="mdiv" style="display: none;">
+<h2 style="text-align:center; font-family: 'Shadows Into Light', cursive; font-size: 35px;">Our Team</h2>
+<div class="Maincontainer">
+    &nbsp;
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/img/faroolle1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2 class="name">Ahmed Faroolle</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>axmedfaroolle@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="/img/ziza.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Abdiaziz Adam</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>abdulaziiz@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Abdullahi Wedow</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>abdulahigeele5@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Muktar Abdullahi</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>muqtar@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Zakir Rashid</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>zakir@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Mohamed Abdikarin</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>moh@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Mohamed abdullahi</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>moh125@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Farhan Ali</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>farhan@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Munasar Sharif</h2>
+        <p class="title">Developer</p>
+        <p>One of the nine students in Group F who made this project.</p>
+        <p>munasar@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+</div>
+<script>
+ function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+ document.getElementById("mdiv").style.display = "block";
+}
+</script>
+</body>
+</html>

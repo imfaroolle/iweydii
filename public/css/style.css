@@ -1,0 +1,1345 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+html{
+  background-color: #ffff;
+  font-family: "lato" , "arial" , sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+body{
+  background-color: #ddd;
+  width: 100%;
+  height: 119.8vh;
+}
+
+.header{
+    width: 100%;
+    background-color: #2c3e50;
+    height: 50px;
+}
+
+.admin-panel{
+    background-color: #2c3e50;
+    height: 100vh;
+    width: 16%;
+    float: left;
+    display: block;
+}
+.main-menu{
+    display: block;
+    position: relative;
+    top: 40px;
+    left: auto;
+    overflow: hidden;
+    align-items: center;
+    
+
+}
+/* Style the tab */
+.tab {
+    float: left;
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 100%;  
+}
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab .outside , .dashboard{
+    display: block;
+    background-color: #2c3e50;
+    padding: 16px 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+    font-size: 18px;
+    color: #b5c6d6;
+    transition: color 0.3s , background-color 0.3s;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover ,   #student:hover , #admins:hover , #questions:hover , #Answers:hover {
+    background-color: #263645;
+    color: #ffff;
+
+  }
+
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: right;
+    padding: 0px 12px;
+    width: 83.99%;
+    background-color: #ddd;
+    min-height: 100vh;
+    display: none;
+    margin: 0;
+  }
+  
+  .menu{
+      position: relative;
+      text-align: center;
+      color: white;
+      background-color: #2c3e50;
+  }
+
+  .menu ul{
+      list-style: none;
+  }
+
+  .menu ul li{
+      font-size: 18px;
+  }
+
+  .studentview , .adminsview , .questionview , .Answersview{      
+    display: none;
+    background-color: #202d3a;
+    color: #44607c;
+    padding: 16px 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 100;
+    user-select: none;
+    transition: color 0.3s , background-color 0.3s;
+  }
+
+  .accord{
+      cursor: pointer;
+      padding: 16px 10px;
+      text-align: left;
+      color: #b5c6d6;
+      user-select: none;
+      transition: color 0.3s , background-color 0.3s;
+  }
+
+#admins , #questions , #student , #Answers{
+  user-select: none;
+}
+ 
+
+.tab .outside{
+    text-decoration: none;
+}
+
+.tab .outside:hover{
+    background-color: #e74c3c;
+    color: #ffff;
+}
+.active{
+    background-color: #263645;
+    
+  }
+
+.accord:after{
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 8px;
+  color: white;
+  float: right;
+  margin-right: 15px;
+  margin-top: 6px;
+}
+
+.active::after{
+  content: '\02796'; /* Unicode character for "plus" sign (+) */
+  font-size: 8px;
+  color: white;
+  float: right;
+  margin-right: 15px;
+  margin-top: 6px;
+}
+
+.adminimg{
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.adminimg img{
+  width: 70%;
+  height: 75%;
+  position: absolute;
+  margin: 0 auto;
+  top: 10%;
+  left: 15%;
+  border-radius: 60%;
+
+
+}
+
+.adminimg h3{
+  position: relative;
+  top: 90%;
+  text-align: center;
+  color: #cbd7e3;
+  font-weight: 200;
+  font-size: 20px;
+  cursor: inherit;
+  user-select: none;
+}
+
+.adminimg img{
+  opacity: 0.7;
+  transform: scale(1.15);
+  transition: transform 0.5s , opacity 0.5s;
+}
+
+.adminimg img:hover{
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+
+/* nav btn */
+
+.navbtn{
+  position: relative;
+  font-size: 40px;
+  color: #44607c;
+  float: left;
+  top: 5px;
+  left: 4px;
+  text-align: center;
+  width: 50px;
+  transition: color 0.3s ease , background-color 0.3s ease;
+}
+
+.navbtn:hover{
+  background-color:#263645;
+  cursor: pointer;
+  color: #ffff;
+}
+
+/* mini panel */
+
+.minipanel{
+  background-color: #2c3e50;
+  height: 100vh;
+  width: 4.5%;
+  float: left;
+  display: none;
+}
+
+.icons{
+  position: relative;
+  background-color:#2c3e50;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 85px;
+}
+
+.minicons{
+  font-size: 35px;
+  text-align: center;
+  color: #44607c;
+  margin-top: 18px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: color 0.3s ,  background-color 0.3s;
+}
+
+.minicons:hover{
+  color: #ffff;
+  background-color: #263645;
+}
+
+.insidetabs:hover{
+  background-color: #263645;
+  color: #ffff;
+}
+
+.adminsviewMin , .studentsViewmin , .questionviewMin , .AnswersviewMin{
+  font-size: 20px;
+  text-align: center;
+  color: #44607c;
+  margin-top: 18px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: none;
+  transition: color 0.3s ,  background-color 0.3s;
+}
+
+.adminsviewMin:hover , .studentsViewmin:hover , .questionviewMin:hover , .AnswersviewMin:hover{
+  background-color: #263645;
+  color: #ffff;
+}
+
+.delay{
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+/* nav img */
+
+.imgcircle{
+  float: right;
+  width: 50px;
+  height: 40px;
+  position: relative;
+  right: 20px;
+  top: 5px;
+  text-align: center;
+  
+}
+
+.imgcircle img{
+  width: 80%;
+  height: 100%;
+  border-radius: 60px;
+  opacity: 0.7;
+  transform: scale(1.15);
+  transition: transform 0.5s , opacity 0.5s;
+  cursor: pointer;
+}
+
+.imgcircle img:hover{
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* .time{
+  width: 150px;
+  height: 50px;
+  float: left;
+  position: absolute;
+  left: 270px;
+  
+}
+
+.timeicon{
+  color: #ffff;
+  font-size: 28px;
+  position: relative;
+  top: 10px;
+}
+
+.timetxt{
+  color: #ffff;
+  font-size: 14px;
+  position: relative;
+  top: 4px;
+  left: 2px;
+} */
+
+/* .logout{
+  width: 100px;
+  height: 50px;
+  float: right;
+  position: absolute;
+  right: 350px;
+  text-align: center;
+  top: 3px;
+  
+}
+
+.logoutbtn{
+  display: inline-block;
+  padding: 10px 30px;
+  width: 200px;
+  color: #ffff;
+  border-radius: 200px;
+  text-decoration: none;
+  font-weight: 300;
+  background-color:#1a5073;
+  transition: background-color 0 , border 0.2s , color 0.2s;
+}
+
+.logoutbtn:hover{
+  color: #ffff;
+  background-color: #d35400;
+} */
+
+/* .dateicon{
+  color: #ffff;
+  font-size: 28px;
+  position: relative;
+  top: 10px;
+  left: 35px;
+}
+
+.datetxt{
+  color: #ffff;
+  font-size: 14px;
+  position: relative;
+  top: 4px;
+  left: 40px;
+} */
+
+.navibar{
+  display: block;
+  width: 580px;
+  height: 50px;
+  float: right;
+  position: absolute;
+  right: 300px;
+  text-align: center;
+}
+
+.navibar ul{
+  list-style: none;
+  display: inline-block;
+}
+
+.navibar li{
+  display: inline-block;
+  text-align: center;
+  margin-right: 25px;
+  
+}
+
+.navibar li a{
+  position: relative;
+  top: 10px;
+  text-decoration: none;
+  color: #cbd7e3;
+  padding: 18px 18px;
+}
+
+ .navibar li a:hover{
+  background-color:#1a252f;
+  color: #ffff;
+}
+ 
+.navibar li a:active{
+  background-color: red;
+}
+
+
+/* dashboard design */
+
+.content-1{
+  background-color: #fff;
+  width: 102.2%;
+  margin-left: 0;
+  height: 10vh;
+  position: relative;
+  float: left;
+  left: -12px;
+}
+
+.content-1 p{
+  color: #aaa;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.content-1 h3{
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.content-2{
+  background-color: #fff;
+  width: 100%;
+  margin-left: 0;
+  height: 13vh;
+  position: relative;
+  float: left;
+  top: 10px;
+  display: block;
+}
+
+.content-3{
+  background-color: #fff;
+  width: 63%;
+  margin-left: 0;
+  height: 50vh;
+  position: relative;
+  float: left;
+  top: 18px;
+}
+
+
+.content-4{
+  background-color: #fff;
+  width: 36%;
+  height: 50vh;
+  position: relative;
+  float: right;
+  top: 18px;
+  left: 0;
+
+}
+
+.content-5{
+  background-color: #fff;
+  width: 24%;
+  margin-left: 0;
+  height: 20vh;
+  position: relative;
+  float: left;
+  top: 30px;
+}
+
+.content-6{
+  background-color: white;
+  width: 54%;
+  margin-left: 10px;
+  height: 20vh;
+  position: relative;
+  float: left;
+  top: 30px;
+
+}
+
+.content-7{
+  /* background-image: url(../img/Faroolle1.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  margin-left: 10px;
+  height: 20vh;
+  position: relative;
+  float: right;
+  top: 30px;
+}
+
+/* .content-7 img{
+  width: 10%;
+  height: 100%;
+} */
+
+
+/* content 1 section */
+
+.textplace{
+  position: relative;
+  width: 16.3%;
+  height: 100%;
+  text-align: center;
+  display: inline-block;
+  top: 0;
+}
+
+.textplace h4{
+  font-size: 12px; 
+  position: relative;
+  top: 8%;
+  font-weight: 200;
+}
+
+
+.textplace h5{
+  font-size: 24px; 
+  position: relative;
+  top: 12%;
+  font-weight: bold;
+  font-style: bold;
+
+}
+
+.icondesc{
+  /* float: left; */
+  font-size: 22px; 
+  position: relative;
+  /* top: 13%; */
+  /* left: 15%; */
+}
+
+.mins{
+  text-align: right;
+  font-size: 6px;
+  background-color: blue;
+}
+
+.h5::after{
+  content: 'm';
+  font-size: 12px;
+  color: #1a252f;
+}
+.h5{
+  color: #e74c3c;
+}
+
+.green{
+  color :#36ac05;
+}
+
+.theRest{
+  color: #1a252f;
+}
+
+/* content 2 styles */
+
+.righTop{
+  background-color: inherit;
+  float: left;
+  width: 25%;
+  height: 20%;
+}
+
+.updateHour{
+  color: #aaa;
+  font-size: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.h6{
+  margin-left: 10px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.totalToday{
+  background-color: #e6e6e6;
+  float: right;
+  width: 17%;
+  height: 25%;
+  margin-right: 18%;
+  margin-top: 10px;
+}
+
+.imgArea{
+  background-color: #aaa;
+  background-image: url(../img/back.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 85%;
+  height: 70%;
+  float: left;
+  margin-top: 5px;
+}
+
+/* .imgArea img{
+  width: 100%;
+  height: 100%;
+} */
+
+.leftAreImg{
+  background-color: #2c3e50;
+  background-image: url(../img/chart.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  width: 15%;
+  height: 90%;
+  float: right;
+  position: relative;
+  top: -18%;
+}
+
+.leftAreImg img{
+  width: 100%;
+  height: 100%;
+}
+
+.pageViewText{
+  float: right;
+  text-transform: uppercase;
+  position: absolute;
+  left: 87%;
+  margin-top: 10px;
+}
+
+.h62{
+  text-align: center;
+  font-size: 25px;
+  color: #1a252f;
+  margin-top: 10px;
+}
+
+.todayTotaltext{
+  font-size: 12px;
+  text-align: center;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+
+/* content 4 */
+
+.works{
+  display: block;
+  width: 100%;
+  height: 15%;
+
+}
+
+.works:first-of-type{
+  margin-top: 30px;
+}
+
+
+/* content 5 */
+.activty{
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 12px;
+  color: black;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+
+.activty::after{
+  content: '9';
+  font-size: 14px;
+  background-color: #486e12;
+  margin-left: 5px;
+  color: #fff;
+  padding: 0 4px;
+}
+
+.todayActivity{
+  margin-top: 12px;
+  display: inline-block;
+  width: 30%;
+  height: 40%;
+  margin-right: 6px;
+  background-color: #fff;
+}
+
+/* .todayActivity div:last-child{
+  margin-right: 0;
+} */
+
+
+.activitytime{
+  text-align: center;
+  color: #1a252f;
+  font-size: 18px;
+  margin-top: 8px;
+
+}
+
+.textActiveTime{
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.activtyBack{
+  background-image: url(../img/waveback1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  float: left;
+  display: block;
+  width: 100%;
+  height: 35%;
+
+}
+
+.lines{
+  display: block;
+  width: 94%;
+  height: 30%;
+  float: right;
+  border-bottom: 1px solid #aaa;
+}
+
+/* .lines:first-child::after{
+  content: '100';
+  font-size: 12px;
+  margin-right: 4px;
+  color: #1a252f;
+  position: relative;
+  top: 23px;
+  right: 30px;
+} */
+
+.lines p{
+  font-size: 12px;
+  margin-right: 4px;
+  color: #1a252f;
+  position: relative;
+  top: 30px;
+  right: 30px;
+}
+
+
+#lines2::after{
+  content: ' 82';
+  font-size: 12px;
+  margin-right: 4px;
+  color: #1a252f;
+  position: relative;
+  top: 22px;
+  right: 30px;
+}
+
+
+.linesback{
+  background-image: url(../img/waveeback.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 25%;
+  display: block;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.status{
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 12px;
+  color:#1a252f;
+  margin-top: 5px;
+  margin-left: 5px; 
+  width: 10%;
+}
+
+
+
+.status::after{
+  content: '6';
+  font-size: 14px;
+  background-color: #e74c3c;
+  margin-left: 5px;
+  color: #fff;
+  padding: 0 4px;
+}
+
+.menudash{
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 12px;
+  color:#1a252f;
+  margin-top: 5px;
+  margin-left: 5px; 
+  width: 10%;
+}
+
+.textline{
+  text-align: center;
+  color: #1a252f;
+  vertical-align: middle;
+  border-bottom: 1px solid #aaa;
+
+}
+
+.textline a{
+  text-decoration: none;
+  color: #1a252f;
+}
+
+.close{
+  float: right;
+  font-size: 18px;
+  color:#1a252f;
+  font-weight: bold; 
+  width: 10%;
+  position: relative;
+  top: -14px;
+  right: -13px;
+  cursor: pointer;
+}
+
+
+/* options */
+
+
+.options{
+  background-color: #fff;
+  display: none;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 5%;
+  z-index: 1;
+  box-shadow: 1px 2px 8px 2px #888888 ;
+}
+
+.profilesection{
+  width: 100%;
+  height: 25%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.profilesection img{
+  width: 15%;
+  height: 55%;
+  margin-top: 4%;
+  margin-left: 3%;
+  border-radius: 60px;
+  float: left;
+  opacity: 0.9;
+  transform: scale(1.1);
+  transition: transform 0.5s , opacity 0.5s;
+}
+
+
+
+
+.profilesection img:hover{
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.profilesection .name{
+  font-size: 18px;
+  position: relative;
+  top: 17%;
+  right: 8%;
+
+}
+
+.profilesection .email{
+  font-size: 12px;
+  position: relative;
+  top: 12%;
+  right: 5%;
+}
+
+.partSections{
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin-bottom: 15px;
+  transition:   background-color 0.3s
+}
+/* 
+.partSections:first-of-type{
+  margin-top: 10px;
+y;
+} */
+
+.partSections .textInParts{
+  text-align: center;
+  /* border-bottom: 1px solid #aaa; */
+  font-size: 18px;
+  font-weight: 200;
+  color: #1a252f;
+  text-align: center;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 5px;
+  transition:   background-color 0.3s ,   border-bottom 0.3s;
+  cursor: pointer;
+}
+
+.partSections:last-of-type{
+  height: 15%;
+}
+.partSections:hover{
+  background-color: #eee;
+
+}
+
+.textInParts:hover{
+  border-bottom: none;
+}
+
+.textInParts a{
+  text-decoration: none;
+  color: #1a252f;
+}
+
+
+
+/* styling admin field */
+
+.adminField{
+  width: 102%;
+  height: 100%;
+  position: relative;
+  right: 1%;
+  display: block;
+
+}
+
+.adminField .addAdmin{
+  text-align: center;
+  font-size: 22px;
+  position: relative;
+  top: 10px;
+  color: #1a252f;
+
+}
+
+/* top: 10px; Muhiim */
+
+.adminField .alertAdmin{
+  background-color: #a4e688;
+  width: 30%;
+  height: 10%;
+  /* display: block; */
+  position: relative;
+  top: 4%;
+  left: 35%;
+  text-align: center;
+  color: #1a252f;
+  display: none;
+}
+
+.alertAdmin .alerText{
+  font-size: 18px;
+  color: #1a252f;
+  font-weight: 200;
+  position: relative;
+  top: 30%;
+}
+
+/* admin adding form */
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Style the input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid #2c3e50;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.form{
+  margin-top: 5%;
+}
+
+
+/* table style */
+
+table {
+  background-color: #fff;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+  border: 1px solid #ddd;
+  margin-top: 40px;
+  margin-left: 5%;
+  box-shadow: 4px 4px 8px #888888;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+  transition:   background-color 0.2s;
+}
+
+tr:hover{
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even):hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+table th{
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  font-weight: 200;
+}
+
+tr .update{
+  text-decoration: none;
+  background-color: #2980b9;
+  padding: 4px 4px;
+  text-align: center;
+  color: #fff;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+tr .delete{
+  text-decoration: none;
+  background-color: #d35400;
+  padding: 4px 4px;
+  text-align: center;
+  color: #fff;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+tr .delete{
+  opacity: 1;
+}
+
+/* error texts styling */
+
+.inputerror{
+  color: #d35400;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.inputerror1{
+  color: #d35400;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-container3:last-of-type{
+  margin-left: 25%;
+}
+
+
+
+/* form2 styles */
+
+.input-container1 , .input-container3{
+  display: inline-block;
+  width: 48%;
+  margin-bottom: 25px;
+  margin-left: 10px;
+
+}
+
+.input-container2 {
+  display: inline-block;
+  width: 97%;
+  margin-bottom: 25px;
+  margin-left: 10px;
+}
+
+/* Style the form icons */
+.icon1 {
+  padding: 6px 10px;
+  background: #2c3e50;
+  color: white;
+  min-width: 55px;
+  text-align: center;
+  position: relative;
+  left: 4px;
+
+  
+}
+
+/* Style the input fields */
+.input-field1 {
+  width: 92%;
+  padding: 4px 4px;
+  outline: none;
+  margin-bottom: 5%;
+}
+
+.input-field1:focus {
+  border: 2px solid #2c3e50;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  opacity: 0.8;
+  margin-left: 18%;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.form{
+  margin-top: 5%;
+}
+
+.regId{
+  float: right;
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 9px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.regId:hover{
+  opacity: 1;
+}
+
+.cfield{
+  margin-left: 30%;
+}
+
+/* Full-width input fields */
+.uname, input[type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.button {
+  color: white;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  background-color: #fff;
+}
+
+.pbupdate{
+  color: white;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  background-color: #2c3e50;
+  padding: 8px;
+}
+
+.pbupdate:hover{
+  opacity: 0.8;
+}
+
+.button:hover{
+  background-color: #eee;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+

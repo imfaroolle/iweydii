@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/ex-css/Grid.css">
+  <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+  <link rel="stylesheet" href="/ex-css/normalize.css">
+  <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/addquestion.css">
+    <title>Q-A Forum</title>
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="question-form">
+            <div class="headerQuestion">
+                <h2>Ask Public Question</h2>
+            </div>
+            <div class="place">
+                 <form action="/askpublicquestion" method="POST" class="form animated bounceIn">                   
+
+                    <div class="input-container1">
+                    <span class=" inputerror" id="qtitlee">Title required*</span>
+                      <i class="icon1 ion-paperclip"></i>
+                      <input class="input-field1" type="text" placeholder="Title" id="qtitle" name="title">
+                    </div>
+
+                    <div class="input-container1">                    
+                      <span class="inputerror" id="tageqc">Tag required*</span>
+                      <i class="icon2 ion-link"></i>
+                      <input class="input-field1" type="text" id="tagqc" placeholder="Enter tags : example - html , css , javascript " name="tagname">
+                    </div>
+
+                    <div class="input-container2">                    
+                      <span class="inputerror1" id="questionErr">Question required*</span>
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="userqbtn">Ask</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/js/userQuestionV.js"></script>
+    <script>
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.entities = false; 
+    CKEDITOR.config.fillEmptyBlocks = false;
+    CKEDITOR.config.tabSpaces = 0;
+    CKEDITOR.config.basicEntities = false;
+    CKEDITOR.config.entities_greek = false; 
+    CKEDITOR.config.entities_latin = false;
+      CKEDITOR.replace('content');
+
+ var editor1 = CKEDITOR.instances.content;
+ var btnqc = document.getElementById('userqbtn');
+
+      // question validation
+function questionValidation(){
+    var textbox_data = CKEDITOR.instances.content.getData();
+if(textbox_data.length > 599){
+  questionErr.innerHTML = "must be less than 600 charecters*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data.length < 5){
+  questionErr.innerHTML = " must be more than 5 charecters*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+  questionErr.innerHTML = "Question required*";
+    btnqc.setAttribute('disabled' , 'disabled');
+    btnqc.style.cursor = 'no-drop';
+} else{
+    questionErr.innerHTML = "";
+    btnqc.removeAttribute('disabled');
+    btnqc.style.cursor = 'pointer'
+}
+}
+
+
+      editor1.on('key' , (e)=>{
+        questionValidation();
+      })
+
+
+      
+userqbtn.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    questionValidation();
+    titleValidation();
+    tagsValidation();
+});
+
+    </script>
+</body>
+</html>

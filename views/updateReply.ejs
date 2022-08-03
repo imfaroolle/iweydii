@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/updateQ.css">
+    <title>QA Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+         <h2 class="H2Title">Update Improve Question Data</h2>
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <form action="/admin/reply/update" method="POST" class="form animated bounceIn">      
+
+              <div class="input-container1">
+                <span class="inputerror" id="rrideu"></span>
+                  <i class="icon1 ion-key"></i>
+                  <input class="input-field1" type="text" placeholder="Answer ID" id="rridu" name="rid" value="<%=DataUpdate._id%>">
+                </div>
+                <div class="input-container1">
+                <span class="inputerror" id="rqideu"></span>
+                  <i class="icon1 ion-key"></i>
+                  <input class="input-field1" type="text" placeholder="Question ID"  id="rqidu" name="qid" value="<%=DataUpdate.qid%>">
+                </div>
+
+                <div class="input-container2">                    
+                  <span class="inputerror" id="rue"></span>
+                <textarea name="uiqc" id="uiqc" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit" class="btn" id="btnru">Update</button>
+              </form>
+        </div>
+    </div>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/js/updateReplyV.js"></script>
+    <script>
+      CKEDITOR.replace('uiqc');
+      CKEDITOR.instances.uiqc.setData("<%=DataUpdate.reply%>");
+      CKEDITOR.config.autoParagraph = false;
+    </script>
+   <% } %>
+    <script>
+var editor4 = CKEDITOR.instances.uiqc;
+      // reply Update validation 
+// reply Update validation 
+function replyUpValidation(){
+    var textbox_data = CKEDITOR.instances.uiqc.getData();
+if(textbox_data > 99){
+  rue.innerHTML = "Reply must be less than 100 charecters*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+  rue.innerHTML = "Reply must be greater than 5 charecters*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+  rue.innerHTML = "Text  required*";
+    btnru.setAttribute('disabled' , 'disabled');
+    btnru.style.cursor = 'no-drop';
+} else{
+  rue.innerHTML = "";
+    btnru.removeAttribute('disabled');
+    btnru.style.cursor = 'pointer'
+}
+}
+
+
+
+
+editor4.on('key' , (e)=>{
+
+  var replytextError = document.getElementById('replytextError');
+        replyUpValidation();
+      })
+
+btnru.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    replyUpValidation();
+});
+
+
+    </script>
+</body>
+</html>

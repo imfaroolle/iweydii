@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/update.css">
+    <title>QA Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+         <h2 class="H2Title">Update Admin Data</h2>
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <form action="/admin/users/update" method="POST" class="form animated bounceIn">
+                <span class="inputerror1">ID required*</span>                
+                <div class="input-container">
+                  <i class="icon ion-ios-person" id="stdideu"></i>
+                  <input class="input-field" type="text" placeholder="Enter ID" name="idUser" id="stdidu" value="<%=DataUpdate._id%>">
+                </div>
+                <span class="inputerror1" id="stdfnameeu">Firstname required*</span>                
+                <div class="input-container">
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="First Name" name="fname" id="stdfnameu" value="<%=DataUpdate.fname%>">
+                </div>
+                <span class="inputerror1" id="stdlnameeu">Lastname required*</span>            
+                <div class="input-container">
+
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="Last Name" name="lname" id="stdlnameu" value="<%=DataUpdate.lname%>">
+                </div>
+                <span class="inputerror1" id="stdusrnmeu">Username required*</span>
+                <div class="input-container">
+
+                  <i class="icon ion-ios-person"></i>
+                  <input class="input-field" type="text" placeholder="Username" name="usrnm" id="stdusrnmu" value="<%=DataUpdate.username%>">
+                </div>
+                <span class="inputerror1" id="stdemaileu">Email required*</span>            
+                <div class="input-container">
+                  <i class="icon ion-ios-email"></i>
+                  <input class="input-field" type="email" placeholder="Email" name="email" id="stdemailu" value="<%=DataUpdate.email%>">
+                </div>
+
+                <div class="input-container">
+                    <i class="icon ion-ios-email"></i>
+
+                    <select name="dept" id="QuestionTag" class="input-field">
+                        <option value="placeholder" disabled = "disabled" selected><%=DataUpdate.dept%></option>
+                        <option value="bcs&it" >BCS & IT</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="sceince&arts">Sceince and Arts</option>
+                      </select>
+                    
+                  </div>
+                <span class="inputerror1" id="stdpsweu">Password required*</span>
+                <div class="input-container">
+
+                  <i class="icon ion-ios-locked"></i>
+                  <input class=" input-field" type="password" placeholder="Password" name="psw" id="stdpswu" value="<%=DataUpdate.pass%>"> 
+                </div>
+              <span class="inputerror1" id="stdcpsweu">not match*</span>
+                <div class="input-container">
+   
+                  <i class="icon ion-ios-locked"></i>
+                  <input class="input-field" type="password" placeholder="Confirm Password" name="cpsw" id="stdcpswu" value="<%=DataUpdate.pass%>">
+                </div>
+                <button type="submit" class="btn" id="stdu">Update</button>
+              </form>
+              <% } %>
+        </div>
+    </div>
+    <script src="/js/updatestdV.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ex-css/Grid.css">
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css">
+    <link rel="stylesheet" href="/ex-css/normalize.css">
+    <link rel="stylesheet" href="/ex-css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/updateQ.css">
+    <title>QA Forum</title>
+</head>
+<body>
+    <div class="main-container">           
+         <h2 class="H2Title">Update Answer Data</h2>
+        <div class="mini-container">
+          <% if(DataUpdate != null){ %>
+            <form action="/admin/answer/update" method="POST" class="form animated bounceIn">      
+
+              <div class="input-container1">
+                <span class="inputerror" id="anside"></span>
+                  <i class="icon1 ion-key"></i>
+                  <input class="input-field1" type="text" id="ansid" placeholder="Answer ID" name="aid" value="<%=DataUpdate._id%>">
+                </div>
+                <div class="input-container1">
+                <span class="inputerror" id="ansqidue"></span>
+                  <i class="icon1 ion-key"></i>
+                  <input class="input-field1" type="text" id="ansqidu" placeholder="Question ID" name="qid" value="<%=DataUpdate.qid%>">
+                </div>
+
+                <div class="input-container2">                    
+                  <span class="inputerror" id="ansue"></span>
+                <textarea name="ansup" id="ansup" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit" class="btn" id="ansubtn">Update</button>
+              </form>
+        </div>
+    </div>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/js/updateansV.js"></script>
+    <script>
+      CKEDITOR.replace('ansup');
+      CKEDITOR.config.autoParagraph = false;
+      CKEDITOR.instances.ansup.setData("<%=DataUpdate.answer%>");
+     
+    </script>
+   <% } %>
+
+<script>
+var editor6 = CKEDITOR.instances.ansup;
+var ansubtn = document.getElementById('ansubtn');
+
+
+// answer Update validation 
+function ansUpValidation(){
+    var textbox_data = CKEDITOR.instances.ansup.getData();
+if(textbox_data > 799){
+    ansue.innerHTML = "Answer must be less than 800 charecters*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop';
+} 
+
+else if(textbox_data < 5){
+    ansue.innerHTML = "Answer must be greater than 5 charecters*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop'
+}
+
+else if(textbox_data == ""){
+    ansue.innerHTML = "Text  required*";
+    ansubtn.setAttribute('disabled' , 'disabled');
+    ansubtn.style.cursor = 'no-drop';
+} else{
+    ansue.innerHTML = "";
+    ansubtn.removeAttribute('disabled');
+    ansubtn.style.cursor = 'pointer'
+}
+}
+
+
+
+
+editor6.on('key' , (e)=>{
+        ansUpValidation();
+      })
+
+      
+
+
+ansubtn.addEventListener('mouseenter' , (e)=>{
+    e.preventDefault();
+    ansUpValidation();
+    ansIdUpValidation();
+    QuestionIdUpValidation();
+});
+</script>
+    
+</body>
+</html>
