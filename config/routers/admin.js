@@ -134,9 +134,9 @@ router.post("/admin/login" , async(req , res)=>{
 // creating admin
 router.post('/admincreating' , async(req , res)=>{
     var Authtoken = req.cookies.adminAuth || '';
-    if(!Authtoken){
-        res.redirect('/qafadmin');
-    }
+    // if(!Authtoken){
+    //     res.redirect('/qafadmin');
+    // }
     const admin = new Admin({
         fname : req.body.fname , 
         lname : req.body.lname , 
