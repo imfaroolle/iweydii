@@ -514,7 +514,7 @@ router.post('/send' , (req , res , next)=>{
         service: 'gmail',
         auth: {
           user: 'gomez14325@gmail.com',
-          pass: '0615533440a'
+          pass: 'constclosture=(name)=>{return "faroolle"};'
         }
       });
       
@@ -526,7 +526,8 @@ router.post('/send' , (req , res , next)=>{
       };
       
       transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
+          if (error) {
+            console.log(error)
             res.render('erroPage' , {error : "Something Wrong"});
         } else {
             
