@@ -6,6 +6,8 @@ Iweydii is basically like StackOverflow Website.
 ## Table of contents
 
 - [Overview](#overview)
+  - [NOTE](#NOTE)
+  - [Website Roles](#Roles)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -16,6 +18,21 @@ Iweydii is basically like StackOverflow Website.
 
 ### NOTE
 This website is not responsive.
+
+### Roles
+
+#### Admin
+An admin can CREATE, UPDATE, AND DELETE
+- another admin
+- Student
+- Question
+- Answer
+
+#### User/Student
+A user/student can CREATE, UPDATE
+- Account
+- Question
+- Answer
 
 ### Screenshot
 
