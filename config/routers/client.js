@@ -514,7 +514,7 @@ router.post('/send' , (req , res , next)=>{
         service: 'gmail',
         auth: {
           user: 'gomez14325@gmail.com',
-          pass: 'constclosture=(name)=>{return "faroolle"};'
+          pass: ''
         }
       });
       
