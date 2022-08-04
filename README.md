@@ -23,14 +23,14 @@ This website is not responsive.
 
 #### Admin
 An admin can CREATE, UPDATE, AND DELETE
-- another admin
+- Another admin
 - Student
 - Question
 - Answer
 
 #### User/Student
 A user/student can CREATE, UPDATE
-- Account
+- Their account
 - Question
 - Answer
 
