@@ -513,13 +513,13 @@ router.post('/send' , (req , res , next)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'gomez14325@gmail.com',
-          pass: ''
+          user: 'your@gmail.com',
+          pass: 'your password'
         }
       });
       
       var mailOptions = {
-        from: 'axmedfaroolle@gmail.com',
+        from: 'youremail@gmail.com',
         to: 'gomez14325@gmail.com',
         subject: "Need help from " + req.body.firstname + " " +  req.body.lastname,
         text: req.body.subject
