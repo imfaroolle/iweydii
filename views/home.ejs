@@ -1,211 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Omnifood is a premium food delivery service with the mission to bring affordable and healty meals to as many people as possible.">
-        
-        <link rel="stylesheet" href="/ex-css/Grid.css">
-        <link rel="stylesheet" href="/ex-css/ionicons.min.css">
-        <link rel="stylesheet" href="/ex-css/normalize.css">
-        <link rel="stylesheet" href="/ex-css/animate.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/home.css">
-        <title>Iweydii</title>
-<style>
-    /* Center the loader */
-#loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #2c3e50;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Omnifood is a premium food delivery service with the mission to bring affordable and healty meals to as many people as possible."
+    />
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+    <link rel="stylesheet" href="/ex-css/Grid.css" />
+    <link rel="stylesheet" href="/ex-css/ionicons.min.css" />
+    <link rel="stylesheet" href="/ex-css/normalize.css" />
+    <link rel="stylesheet" href="/ex-css/animate.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/home.css" />
+    <title>Iweydii</title>
+    <style>
+      /* Center the loader */
+      #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #2c3e50;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
 
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
-}
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
+      /* Add animation to "page content" */
+      .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s;
+      }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
+      @-webkit-keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0;
+        }
+        to {
+          bottom: 0px;
+          opacity: 1;
+        }
+      }
 
-</style>
-        
-    </head>
-    <body onload="myFunction()">
-        <div id="loader"></div>
-        <div id="mdiv" style="display:none;">
-        <header>
-            <nav>
-                <div class="row">
-                    <h5 class="textlogo">Iweydii</h5>
-                    <ul class="main-nav js--main-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/help">Help</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/signup">Sign up</a></li>
-                    </ul>
-                    <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
-                </div>
-            </nav>
-            <div class="hero-text-box">
-                <h1 style="line-height: 70px; margin-bottom: 30px;">Ask Question and <br>get the Answer.</h1>
-                <a class="btn btn-full js--scroll-to-plans" href="/signup">Join Us</a>
-                <a class="btn btn-ghost js--scroll-to-start" href="#works">Show me more</a>
-            </div>
-            
-        </header>
-      
-        <section class="section-steps" id="works">
-            <div class="row">
-                <h2>How it works &mdash; Simple as 1, 2, 3</h2>
-            </div>
-            <div class="row">
-                <div class="col span-1-of-2 steps-box">
-                    <h5 class="textLogoBig">Iweydii</h5>
-                </div>
-                <div class="col span-1-of-2 steps-box">
-                    <div class="works-step clearfix">
-                        <div>1</div>
-                        <p>Sing Up and become member <br> and that is all free !</p>
-                    </div>
-                    <div class="works-step clearfix">
-                        <div>2</div>
-                        <p>Ask Every Question ? <br> in your mind !</p>
-                    </div>
-                    <div class="works-step clearfix">
-                        <div>3</div>
-                        <p>Get your Answer! <br> or Help other people who asked questions !</p>
-                    </div>
-                
-                </div>
-            </div>
-        </section>
-        
+      @keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0;
+        }
+        to {
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body onload="myFunction()">
+    <div id="loader"></div>
+    <div id="mdiv" style="display: none">
+      <header>
+        <nav>
+          <div class="row">
+            <h5 class="textlogo">Iweydii</h5>
+            <ul class="main-nav js--main-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign up</a></li>
+            </ul>
+            <a class="mobile-nav-icon js--nav-icon"
+              ><i class="ion-navicon-round"></i
+            ></a>
+          </div>
+        </nav>
+        <div class="hero-text-box">
+          <h1 style="line-height: 70px; margin-bottom: 30px">
+            Ask Question and <br />get the Answer.
+          </h1>
+          <a class="btn btn-full js--scroll-to-plans" href="/signup">Join Us</a>
+          <a class="btn btn-ghost js--scroll-to-start" href="#works"
+            >Show me more</a
+          >
+        </div>
+      </header>
 
-        
-        <section class="section-testimonials">
-            <div class="row">
-                <h2>how students reacted !</h2>
+      <section class="section-steps" id="works">
+        <div class="row">
+          <h2>How it works &mdash; Simple as 1, 2, 3</h2>
+        </div>
+        <div class="row">
+          <div class="col span-1-of-2 steps-box">
+            <h5 class="textLogoBig">Iweydii</h5>
+          </div>
+          <div class="col span-1-of-2 steps-box">
+            <div class="works-step clearfix">
+              <div>1</div>
+              <p>
+                Sing Up and become member <br />
+                and that is all free !
+              </p>
             </div>
-            <div class="row">
-                <div class="col span-1-of-4">
-                    <blockquote>
-                        this website is just awesome! I just started and i got everything on my mind  so i congratulate all who made this happen !
-                        <br>
-                        <br>
-                        <br>
-                        <cite><img src="/img/Zola.jpg" alt="Student 1 photo">Abdinasir Tamhiid</cite>
-                    </blockquote>
-                </div>
-                <div class="col span-1-of-4">
-                    <blockquote>
-                        Before I got here, I never thought this website would help me a lot but when I joined, what I got was wow!
-                        <cite><img src="/img/imfaroolle.png" alt="Student 2 photo">Ahmed Faroole</cite>
-                    </blockquote>
-                </div>
-                <div class="col span-1-of-4">
-                    <blockquote>
-                      I wondered how this website become free ! you guys are just awesome
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                        <cite><img src="/img/ziza.JPG" alt="Customer 2 photo">Abdiaziz adam</cite>
-                    </blockquote>
-                </div>
-                <div class="col span-1-of-4">
-                    <blockquote>
-                    oh ! this website is a next level guys go ahead , you are making all of us pass any exam before we go to it ! 
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <cite><img src="/img/mo.JPG" alt="Student 3 photo">Mohamed Liban</cite>
-                    </blockquote>
-                </div>
+            <div class="works-step clearfix">
+              <div>2</div>
+              <p>
+                Ask Every Question ? <br />
+                in your mind !
+              </p>
             </div>
-        </section>
-        
-        
-        
-        
-    
-        
-        <footer>
-            <div class="row">
-                <div class="col span-1-of-2">
-                    <ul class="footer-nav">
-                        <li><a href="/about">About us</a></li>
-                        <li><a href="/help">Help</a></li>
-                    </ul>
-                </div>
-                <div class="col span-1-of-2">
-                    <ul class="social-links">
-                        <li><a href="https://wa.me/252627886278?text=Hello Faroolle" target="_blank"><i class="ion-social-whatsapp"></i></a></li>
-                        <li><a href="https://twitter.com/imfaroolle" target="_blank"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="github.com/imfaroolle"><i class="ion-social-github"></i></a></li>
-                        <li><a href="https://www.instagram.com/imfaroolle/" target="_blank"><i class="ion-social-instagram"></i></a></li>
-                    </ul>
-                </div>
+            <div class="works-step clearfix">
+              <div>3</div>
+              <p>
+                Get your Answer! <br />
+                or Help other people who asked questions !
+              </p>
             </div>
-            <div class="row">
-                <p>
-                    Copyright &copy; 2020 by <a href="https://imfaroolle.com/" target="_blank" style="color: #f3f3f3;">imfaroolle</a> All rights reserved.
-                </p>
-            </div>
-        </footer>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-testimonials">
+        <div class="row">
+          <h2>how students reacted !</h2>
+        </div>
+        <div class="row">
+          <div class="col span-1-of-4">
+            <blockquote>
+              this website is just awesome! I just started and i got everything
+              on my mind so i congratulate all who made this happen !
+              <br />
+              <br />
+              <br />
+              <cite
+                ><img src="/img/Zola.jpg" alt="Student 1 photo" />Abdinasir
+                Tamhiid</cite
+              >
+            </blockquote>
+          </div>
+          <div class="col span-1-of-4">
+            <blockquote>
+              Before I got here, I never thought this website would help me a
+              lot but when I joined, what I got was wow!
+              <cite
+                ><img src="/img/imfaroolle.png" alt="Student 2 photo" />Ahmed
+                Faroole</cite
+              >
+            </blockquote>
+          </div>
+          <div class="col span-1-of-4">
+            <blockquote>
+              I wondered how this website become free ! you guys are just
+              awesome
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <cite
+                ><img src="/img/ziizaa.jpg" alt="student 2 photo" />Abdiaziz
+                adam</cite
+              >
+            </blockquote>
+          </div>
+          <div class="col span-1-of-4">
+            <blockquote>
+              oh ! this website is a next level guys go ahead , you are making
+              all of us pass any exam before we go to it !
+              <br />
+              <br />
+              <br />
+              <br />
+              <cite
+                ><img src="/img/mo.JPG" alt="Student 3 photo" />Mohamed
+                Liban</cite
+              >
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="row">
+          <div class="col span-1-of-2">
+            <ul class="footer-nav">
+              <li><a href="/about">About us</a></li>
+              <li><a href="/help">Help</a></li>
+            </ul>
+          </div>
+          <div class="col span-1-of-2">
+            <ul class="social-links">
+              <li>
+                <a
+                  href="https://wa.me/252627886278?text=Hello Faroolle"
+                  target="_blank"
+                  ><i class="ion-social-whatsapp"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/imfaroolle" target="_blank"
+                  ><i class="ion-social-twitter"></i
+                ></a>
+              </li>
+              <li>
+                <a href="github.com/imfaroolle"
+                  ><i class="ion-social-github"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/imfaroolle/" target="_blank"
+                  ><i class="ion-social-instagram"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <p>
+            Copyright &copy; 2020 by
+            <a
+              href="https://imfaroolle.com/"
+              target="_blank"
+              style="color: #f3f3f3"
+              >imfaroolle</a
+            >
+            All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
-        <script>
- function myFunction() {
-  myVar = setTimeout(showPage, 3000);
-}
-function showPage() {
-  document.getElementById("loader").style.display = "none";
- document.getElementById("mdiv").style.display = "block";
-}
-        </script>
+    <script>
+      function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+      }
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("mdiv").style.display = "block";
+      }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
     <script src="/js/jquery.waypoints.min.js"></script>
     <script src="/js/script.js"></script>
-    
-    </body>  
-    
+  </body>
 </html>
